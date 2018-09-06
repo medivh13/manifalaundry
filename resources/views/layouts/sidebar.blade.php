@@ -5,16 +5,16 @@
         </li>
         <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
         <li class="menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Test1</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Master</a>
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-id-badge"></i><a href="{{URL('admin/user')}}">Users</a></li>
             </ul>
         </li>
-        <li class="menu-item-has-children dropdown">
+        <!-- <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Test2</a>
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-table"></i><a href="{{URL('admin/calculator')}}">Calculator</a></li>
             </ul>
-        </li>
+        </li> -->
     </ul>
 </div><!-- /.navbar-collapse -->
