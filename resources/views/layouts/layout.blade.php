@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>Manifa Laundry</title>
+    <meta name="description" content="Manifa Laundry">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,7 +26,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' rel='stylesheet' type='text/css'>
-    <link href="{{asset('template/DataTables/DataTables-1.10.16/css/jquery.dataTables.css')}}" rel="stylesheet">
+    <!-- <link href="{{asset('template/DataTables/DataTables-1.10.16/css/jquery.dataTables.css')}}" rel="stylesheet"> -->
     <link href="{{asset('template/datepicker/datepicker3.css')}}" rel="stylesheet">
     @yield('css')
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -44,7 +44,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="{{asset('template/images/logo.png')}}" alt="Logo"></a>
+                <!-- <a class="navbar-brand" href="./"><img src="{{asset('template/images/logo.png')}}" alt="Logo"></a> -->
+                <a class="navbar-brand" href="./">Manifa Laundry</a>
                 <a class="navbar-brand hidden" href="./"><img src="{{asset('template/images/logo2.png')}}" alt="Logo"></a>
             </div>
 
@@ -73,7 +74,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Welcome, {{ Auth::user()->name }} <span class="fa fa-caret-down"></span>
+                            Welcome, {{ ucwords(Auth::user()->name) }} <span class="fa fa-caret-down"></span>
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -117,7 +118,7 @@
     <script src="{{ asset('template/assets/js/lib/vector-map/jquery.vmap.min.js')}}"></script>
     <script src="{{ asset('template/assets/js/lib/vector-map/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{ asset('template/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
-    <script src="{{asset('template/DataTables/DataTables-1.10.16/js/jquery.dataTables.js')}}"></script>
+    <!-- <script src="{{asset('template/DataTables/DataTables-1.10.16/js/jquery.dataTables.js')}}"></script> -->
     <script src="{{asset('template/datepicker/bootstrap-datepicker.js')}}"></script>
     <script>
         ( function ( $ ) {

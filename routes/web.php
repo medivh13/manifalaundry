@@ -12,19 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function(){
-	Route::resource('/customer', 'CustomerController');
-  Route::resource('/product', 'ProductController');
-  Route::resource('/order','OrderController');
-  Route::get('/order/codegen/{date}','OrderController@codegen');
-  Route::get('/order/prodname/{id}','OrderController@prodname');
+	// Route::resource('/customer', 'CustomerController');
+	Route::resource('/product', 'Master\ProductController');
+	Route::resource('/order','Transaction\OrderController');
+	Route::get('/order/codegen/{date}','OrderController@codegen');
+	Route::get('/order/prodname/{id}','OrderController@prodname');
 
-  Route::resource('/calculator','CalculatorController');
-  Route::resource('/user','UserController');
+	// Route::resource('/calculator','CalculatorController');
+	Route::resource('/user','UserController');
 });

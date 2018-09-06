@@ -79,7 +79,15 @@
   </div>
 </div>
 @endsection
+@section('css')
+<script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
+<style type="text/css">
+
+</style>
+@endsection
 @section('js')
+<script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
 <script>
 (function ( $ ){
   $.ajaxSetup({
@@ -192,6 +200,7 @@ function getData(){
   table = jQuery('#table').DataTable({
     dom: "lBfrtip",
     processing: true,
+    responsive: true,
     serverSide: true,
     destroy: true,
     bFilter:true,

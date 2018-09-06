@@ -8,8 +8,16 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Master</a>
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-id-badge"></i><a href="{{URL('admin/user')}}">Users</a></li>
+                <li><i class="fa fa-suitcase"></i><a href="{{URL('admin/product')}}">Products</a></li>
             </ul>
         </li>
+        <li class="menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Transaction</a>
+            <ul class="sub-menu children dropdown-menu">
+                <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/order')}}">Orders</a></li>
+            </ul>
+        </li>
+
         <!-- <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Test2</a>
             <ul class="sub-menu children dropdown-menu">
