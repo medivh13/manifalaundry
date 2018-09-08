@@ -8,6 +8,6 @@ class Order extends Model
 {
 	protected $table = 'tb_order';
 	protected $fillable = [
-		'code','customer','created_at','updated_at'
+		'code','customer','alamat','telp','keterangan','created_at','updated_at','tgl_selesai','status_bayar'
 	];
 }

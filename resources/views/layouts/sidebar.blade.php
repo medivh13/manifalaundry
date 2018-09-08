@@ -8,7 +8,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Master</a>
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-id-badge"></i><a href="{{URL('admin/user')}}">Users</a></li>
-                <li><i class="fa fa-suitcase"></i><a href="{{URL('admin/product')}}">Products</a></li>
+                <li><i class="fa fa-suitcase"></i><a href="{{URL('admin/product')}}">Services</a></li>
             </ul>
         </li>
         <li class="menu-item-has-children dropdown">

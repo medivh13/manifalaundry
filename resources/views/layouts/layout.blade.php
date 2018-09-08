@@ -25,8 +25,9 @@
     <link href="{{ asset('template/assets/css/lib/vector-map/jqvmap.min.css')}}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' rel='stylesheet' type='text/css'> -->
     <!-- <link href="{{asset('template/DataTables/DataTables-1.10.16/css/jquery.dataTables.css')}}" rel="stylesheet"> -->
+    <link href="{{asset('template/toastr-master/build/toastr.min.css')}}" rel="stylesheet" type='text/css'>
     <link href="{{asset('template/datepicker/datepicker3.css')}}" rel="stylesheet">
     @yield('css')
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -35,7 +36,7 @@
 <body>
 
 
-        <!-- Left Panel -->
+    <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
@@ -44,8 +45,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <!-- <a class="navbar-brand" href="./"><img src="{{asset('template/images/logo.png')}}" alt="Logo"></a> -->
-                <a class="navbar-brand" href="./">Manifa Laundry</a>
+                <a class="navbar-brand" href="./"><img src="{{asset('template/images/manifa.jpg')}}" alt="Logo" style="width:200%; height:150%"></a>
+                <!-- <a class="navbar-brand" href="./">Manifa Laundry</a> -->
                 <a class="navbar-brand hidden" href="./"><img src="{{asset('template/images/logo2.png')}}" alt="Logo"></a>
             </div>
 
@@ -78,37 +79,39 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                                <!--<a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>-->
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                            <!--<a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>-->
+                            <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>
+        </div>
         <div class="breadcrumbs">
 
         </div>
 
         <div class="content mt-3">
           @yield('content')
-        </div>
-    </div>
+      </div>
+  </div>
 
-    <!--<Right Panel -->
+  <!--<Right Panel -->
 
     <script src="{{ asset('template/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
+    <script src="{{ asset('template/validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('template/assets/js/plugins.js')}}"></script>
     <script src="{{ asset('template/assets/js/main.js')}}"></script>
     <script src="{{ asset('js/axios.min.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <script src="{{ asset('template/assets/js/lib/chart-js/Chart.bundle.js')}}"></script>
@@ -120,24 +123,61 @@
     <script src="{{ asset('template/assets/js/lib/vector-map/country/jquery.vmap.world.js')}}"></script>
     <!-- <script src="{{asset('template/DataTables/DataTables-1.10.16/js/jquery.dataTables.js')}}"></script> -->
     <script src="{{asset('template/datepicker/bootstrap-datepicker.js')}}"></script>
-    <script>
-        ( function ( $ ) {
-            "use strict";
+    <script src="{{asset('template/toastr-master/build/toastr.min.js')}}"></script>
+    <script src="{{asset('js/medivh.js')}}"></script>
+    <script type="text/javascript">
+        @if(session()->has('toastr'))
+        (function ( $ ){
+        toastr.success('New {{session("toastr")}} successfully saved..', 'An {{session("toastr")}} has been created.');
+        })( jQuery );
+        @endif
+        @if(Session::get('update'))
+        (function ( $ ){
+            toastr.success('Edit {{Session::get('update')}} successfully saved..', 'An {{Session::get('update')}} has been edited.');
+        })( jQuery );
+        @endif
+        @if(Session::get('dlt'))
+        (function ( $ ){
+            toastr.success('Successful {{Session::get('dlt')}} deleted..', 'An {{Session::get('dlt')}} has been deleted.');
+        })( jQuery );
+        @endif
+        @if(Session::get('danger'))
+        (function ( $ ){
+        //tambahan untk throw exeption gagal simpan n update
+        toastr.error('New {{Session::get('danger')}} failed to save', 'An error has occured');
+    })( jQuery );
+    @endif
+    @if(Session::get('danger-del'))
+    (function ( $ ){
+        //tmbhn untuk throw exception gagal hapus
+        toastr.error('Data {{Session::get('danger')}} failed to delete', 'An error has occured');
+    })( jQuery );
+    @endif
+    @if(Session::get('error'))
+    (function ( $ ){
+        //tambahan untk throw exeption selesai produksi
+        toastr.error('{{Session::get('error')}} hanya dapat diselesaikan oleh petugas yang berkaitan', 'An error has occured');
+    })( jQuery );
+    @endif
+</script>
+<script>
+    ( function ( $ ) {
+        "use strict";
 
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
-    @yield('js')
+        jQuery( '#vmap' ).vectorMap( {
+            map: 'world_en',
+            backgroundColor: null,
+            color: '#ffffff',
+            hoverOpacity: 0.7,
+            selectedColor: '#1de9b6',
+            enableZoom: true,
+            showTooltip: true,
+            values: sample_data,
+            scaleColors: [ '#1de9b6', '#03a9f5' ],
+            normalizeFunction: 'polynomial'
+        } );
+    } )( jQuery );
+</script>
+@yield('js')
 </body>
 </html>

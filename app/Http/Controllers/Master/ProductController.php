@@ -17,13 +17,13 @@ class ProductController extends Controller
  */
 public function __construct()
 {
-    $this->middleware('auth');
+  $this->middleware('auth');
 }
 public function index()
 {
-    $data['title'] = 'Product';
+  $data['title'] = 'Service';
 
-    return view('product.index', $data);
+  return view('product.index', $data);
 }
 
 /**
@@ -33,7 +33,8 @@ public function index()
  */
 public function create()
 {
-    //
+  $data['title'] = 'New Service';
+  return view('product.create', $data);
 }
 
 /**
@@ -44,7 +45,17 @@ public function create()
  */
 public function store(Request $request)
 {
-    //
+  $data = collect($request->all())
+  ->except(['_token'])
+  ->all();
+
+  $product = Product::create($data);
+
+  if($product){
+    return redirect()->route('product.index')->with('toastr', 'Service');
+  }else{
+    return redirect()->route('product.index')->with('danger', 'Service');
+  }
 }
 
 /**
@@ -59,15 +70,15 @@ public function show(Request $request)
 
   return DataTables::of($index)
   ->editColumn('name', function($index){
-      return ucwords($index->name);
+    return ucwords($index->name);
   })
   ->editColumn('harga', function($index){
     return formatPrice($index->harga);
   })
   ->addColumn('action', function($index){
-      $tag = "<center><a class='btn btn-primary btn-xs ubah' idt='".$index->id."')><i class='fa fa-pencil'></i> Edit</a> ";
-      $tag .= "<a class='btn btn-danger btn-xs hapus' idt='".$index->id."')><i class='fa fa-trash'></i> Delete</a></center>";
-      return $tag;
+    $tag = '<center><a class="btn btn-primary btn-sm ubah" href="'.route('product.edit',['id' => $index->id]).'")><i class="fa fa-pencil"></i> Edit</a>';
+    $tag .= ' <a class="btn btn-danger btn-sm hapus" idt="'.$index->id.'"")><i class="fa fa-trash"></i> Delete</a></center>';
+    return $tag;
   })
   ->make(true);
 }
@@ -80,7 +91,9 @@ public function show(Request $request)
  */
 public function edit($id)
 {
-    //
+  $data['title'] = 'Edit Service';
+  $data['product'] = Product::find($id);
+  return view('product.edit', $data);
 }
 
 /**
@@ -92,7 +105,16 @@ public function edit($id)
  */
 public function update(Request $request, $id)
 {
-    //
+    $data = collect($request->all())
+      ->except(['_token'])
+      ->all();
+      $product = Product::find($id);
+      if($product){
+        $product->update($data);
+        return redirect()->route('product.index')->with('update', 'Service');
+      }else{
+        return redirect()->route('product.index')->with('danger', 'Service');
+      }
 }
 
 /**
@@ -103,6 +125,6 @@ public function update(Request $request, $id)
  */
 public function destroy($id)
 {
-    //
+  return Product::destroy($id);
 }
 }

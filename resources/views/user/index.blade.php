@@ -155,7 +155,7 @@
           if(response){
             toastr.success('Hapus Berhasil');
           }else{
-            toastr.danger('Hapus Gagal');
+            toastr.error('Hapus Gagal');
           }
 
         }

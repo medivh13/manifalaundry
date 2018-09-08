@@ -6,7 +6,7 @@
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
       <span class="float-right" style="margin-top: -6px;">
-        <button type="button" class="btn btn-success btn-sm tambah" data-toggle="modal"><i class="fa fa-plus"></i> Add</button>
+        <a class="btn btn-success btn-sm tambah" href="{{route('product.create')}}"><i class="fa fa-plus"></i> Add</a>
       </span>
     </div>
     <br>
@@ -30,36 +30,6 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="modal modal-modal inmodal fade" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form enctype="multipart/form-data" id="save_form" role="form" method="POST">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <div class="col-sm-9">
-              <input type="hidden" class="form-control" name="id">
-            </div>
-          </div>
-          <div class="row form-group">
-            <label class="col col-md-3 form-control-label">Name</label>
-            <div class="col-md-9">
-              <input type="text" class="form-control name" name="name" placeholder="Customer Name">
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fa fa-chevron-left"></i> Cancel</button>
-          <button type="button" id="saving" class="btn btn-primary saving"><i class="fa fa-save"></i> Save</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
 @endsection
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
@@ -76,10 +46,47 @@
 <script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
 <script type="text/javascript">
  (function ( $ ){
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+  });
   getData();
- })( jQuery );
+  $(document).off('click', '.hapus').on('click', '.hapus', function(e){
+    var id = $(this).attr('idt');
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          url: 'product/'+id,
+          type: "DELETE",
+          dataType: "JSON",
+          data: {
+            _method: 'DELETE',
+          },
+          success: function () {
+            swal("Item Deleted", {
+              icon: "success",
+            });
+            reloadTable();
+          }
+        });
+      }else{
+        swal("Delete Cancel");
+      }
+    });
+  });//hapus
 
- function reloadTable(){
+
+})( jQuery );
+
+function reloadTable(){
   table.ajax.reload(null,false); //reload datatable ajax
 }
 function getData(){
@@ -96,10 +103,10 @@ function getData(){
     ajax: 'product/show',
 
     columns: [
-      {data: 'nomor',name: 'nomor',orderable: false, searchable: false, render: function(data, type, row, meta) {  return meta.row + meta.settings._iDisplayStart + 1; }},
-      {data: 'name', name: 'name', orderable: true, searchable: true},
-      {data: 'harga', name: 'harga', orderable: true, searchable: true,  sClass: "AlignR"},
-      {data: 'action', name: 'action', orderable: true, searchable: true},
+    {data: 'nomor',name: 'nomor',orderable: false, searchable: false, render: function(data, type, row, meta) {  return meta.row + meta.settings._iDisplayStart + 1; }},
+    {data: 'name', name: 'name', orderable: true, searchable: true},
+    {data: 'harga', name: 'harga', orderable: true, searchable: true,  sClass: "AlignR"},
+    {data: 'action', name: 'action', orderable: true, searchable: true},
     ],
   });
 }

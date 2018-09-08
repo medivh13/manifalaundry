@@ -16,8 +16,13 @@ class Tborder extends Migration
         if(!Schema::hasTable('tb_order')){
         Schema::create('tb_order',function(Blueprint $table){
           $table->increments('id');
-          $table->string('code');
-          $table->string('customer');
+          $table->string('code')->nullable();
+          $table->string('customer')->nullable();
+          $table->string('alamat')->nullable();
+          $table->string('telp')->nullable();
+          $table->string('keterangan')->nullable();
+          $table->string('tgl_selesai')->nullable();
+          $table->integer('status_bayar')->nullable();
           $table->timestamps();
         });
       }
