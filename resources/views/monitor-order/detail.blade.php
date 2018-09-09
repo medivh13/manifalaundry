@@ -39,6 +39,11 @@
         </div>
       </div>
     </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-second" onclick="window.history.back()">
+        <i class="fa fa-backward"></i>&nbsp; Back
+      </button>
+    </div>
   </div>
 </div>
 @endsection
