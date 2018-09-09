@@ -45,7 +45,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="{{asset('template/images/manifa.jpg')}}" alt="Logo" style="width:100%; height:100%"></a>
+                <a class="navbar-brand" href="./"><img class="tombol" src="{{asset('template/images/manifa.jpg')}}" alt="Logo" style="width:100%; height:100%"></a>
                 <!-- <a class="navbar-brand" href="./">Manifa Laundry</a> -->
                 <a class="navbar-brand hidden" href="./"><img src="{{asset('template/images/logo2.png')}}" alt="Logo"></a>
             </div>
