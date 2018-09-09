@@ -6,7 +6,7 @@
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
       <span class="float-right" style="margin-top: -6px;">
-        <a class="btn btn-success btn-sm tambah" href="{{route('product.create')}}"><i class="fa fa-plus"></i> Add</a>
+        <a class="btn btn-success btn-sm tambah" href="{{route('product.create')}}"><i class="fa fa-plus"></i><span class="tombol"> Add</span></a>
       </span>
     </div>
     <br>
@@ -39,6 +39,11 @@
 }
 .AlignC{
   text-align: center;
+}
+@media only screen and (max-width: 1026px) {
+    .tombol {
+        display: none;
+    }
 }
 </style>
 @endsection

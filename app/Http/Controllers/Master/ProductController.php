@@ -76,8 +76,8 @@ public function show(Request $request)
     return formatPrice($index->harga);
   })
   ->addColumn('action', function($index){
-    $tag = '<center><a class="btn btn-primary btn-sm ubah" href="'.route('product.edit',['id' => $index->id]).'")><i class="fa fa-pencil"></i> Edit</a>';
-    $tag .= ' <a class="btn btn-danger btn-sm hapus" idt="'.$index->id.'"")><i class="fa fa-trash"></i> Delete</a></center>';
+    $tag = '<center><a class="btn btn-primary btn-sm ubah" href="'.route('product.edit',['id' => $index->id]).'")><i class="fa fa-pencil"></i><span class="tombol"> Edit</span></a>';
+    $tag .= ' <a class="btn btn-danger btn-sm hapus" idt="'.$index->id.'"")><i class="fa fa-trash"></i><span class="tombol"> Delete</span></a></center>';
     return $tag;
   })
   ->make(true);

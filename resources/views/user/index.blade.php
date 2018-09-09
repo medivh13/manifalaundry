@@ -6,7 +6,7 @@
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
       <span class="pull-right" style="margin-top: -6px;">
-        <button type="button" class="btn btn-success btn-sm tambah" data-toggle="modal"><i class="fa fa-plus"></i> Add</button>
+        <button type="button" class="btn btn-success btn-sm tambah" data-toggle="modal"><i class="fa fa-plus"></i><span class="tombol"> Add</span></button>
       </span>
     </div>
     <br>
@@ -83,7 +83,11 @@
 <script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
 <style type="text/css">
-
+@media only screen and (max-width: 1026px) {
+    .tombol {
+        display: none;
+    }
+}
 </style>
 @endsection
 @section('js')
@@ -143,26 +147,33 @@
 
   $(document).off('click', '.hapus').on('click', '.hapus', function(e){
     var id = $(this).attr('idt');
-    if (confirm('Anda yakin ingin menghapus?')) {
-      $.ajax({
-        url: 'user/'+id,
-        type: "DELETE",
-        dataType: "JSON",
-        data: {
-          _method: 'DELETE',
-        },
-        success: function (response) {
-          if(response){
-            toastr.success('Hapus Berhasil');
-          }else{
-            toastr.error('Hapus Gagal');
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          url: 'user/'+id,
+          type: "DELETE",
+          dataType: "JSON",
+          data: {
+            _method: 'DELETE',
+          },
+          success: function () {
+            swal("Item Deleted", {
+              icon: "success",
+            });
+            reloadTable();
           }
-
-        }
-      });
-      //location.reload();
-      reloadTable();
-    }
+        });
+      }else{
+        swal("Delete Cancel");
+      }
+    });
   });
 
   $(document).off('click', '.ubah').on('click', '.ubah', function(e){

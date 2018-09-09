@@ -2,7 +2,7 @@
 @section('content')
 <form id="jxForm" novalidate="novalidate" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
 {{ csrf_field() }}
-<div class="container-fluid">
+
 <div class="animate fadeIn">
 <div class="row">
   <div class="col-lg-2"></div>
@@ -42,7 +42,6 @@
         </div>
       </div>
     </div>
-  </div>
 </form>
 @endsection
 @section('css')
@@ -52,8 +51,11 @@
 
 <script>
 (function ( $ ){
-  
+
   $('#harga').keypress(validateNumber);
+
+  
+
   $("#jxForm").validate({
     rules:{
       name:{required:true},
