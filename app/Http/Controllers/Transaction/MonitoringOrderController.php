@@ -127,6 +127,34 @@
         }
 
         public function detail($id){
+            //dd($id);
+            $data['title'] = 'Detail Order';
+            $order = Order::find($id);
+            // dd($order);
+            $data['total'] = 0;
+            $temp = 0;
+            $data['code'] = $order->code;
+            $data['customer'] = $order->customer;
+            $data['alamat'] = $order->alamat;
+            $data['telp'] = $order->telp;
+            $data['keterangan'] = $order->keterangan;
 
+            $detail = DetailOrder::where('order_id',$order->id)->get();
+            
+            foreach($detail as $key=>$val){
+                $product_id[$key] = $val->product_id;
+                $amount[$key] = $val->amount;
+            }
+
+            foreach($product_id as $key=>$val){
+                $product = Product::find($val);
+                $data['product'][$key] = $product->name;
+                $data['harga'][$key] = $product->harga;
+                $data['amount'][$key] = $amount[$key];
+                $temp = $temp + ($product->harga * $amount[$key]);
+            }
+            $data['total'] = $temp;
+            // dd($data);
+            return view('monitor-order.detail', $data); 
         }
     }
