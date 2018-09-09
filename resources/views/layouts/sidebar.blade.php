@@ -15,6 +15,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Transaction</a>
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/order')}}">Orders</a></li>
+                <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/monitoring-order')}}">Monitoring Orders</a></li>
             </ul>
         </li>
 

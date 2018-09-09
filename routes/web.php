@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::get('/order/codegen/{date}','Transaction\OrderController@codegen');
 	Route::get('/order/prodname/{id}','Transaction\OrderController@prodname');
 
+	Route::resource('monitoring-order','Transaction\MonitoringOrderController');
+	Route::get('monitoring-order/detail/{id}','Transaction\MonitoringOrderController@detail')->name('monitoring-order.detail');;
 	// Route::resource('/calculator','CalculatorController');
 	Route::resource('/user','UserController');
 });
