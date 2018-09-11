@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::resource('monitoring-order','Transaction\MonitoringOrderController');
 	Route::get('monitoring-order/detail/{id}','Transaction\MonitoringOrderController@detail')->name('monitoring-order.detail');;
+	Route::get('monitoring-order/selesai/{id}','Transaction\MonitoringOrderController@selesai')->name('monitoring-order.selesai');;
 	// Route::resource('/calculator','CalculatorController');
 	Route::resource('/user','UserController');
 });

@@ -17,7 +17,7 @@
             <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
               <thead>
                 <tr>
-                  <th width="10%";>#</th>
+                  <th width="5%";>#</th>
                   <th style="text-align:center;">Code</th>
                   <th style="text-align:center;">Customer</th>
                   <th style="text-align:center;">Status</th>
@@ -60,6 +60,38 @@
     },
   });
   getData();
+
+  $(document).off('click', '.selesai').on('click', '.selesai', function(e){
+    var id = $(this).attr('idt');
+    swal({
+      title: "Order telah selesai",
+      text: "Pastikan Order telah terselesaikan dengan baik!",
+      icon: "info",
+      buttons: true,
+      dangerMode: false,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          url: 'monitoring-order/selesai/'+id,
+          type: "GET",
+          dataType: "JSON",
+          // data: {
+          //   _method: 'DELETE',
+          // },
+          success: function () {
+            // console.log('cek')
+            swal("Order Selesai", {
+              icon: "success",
+            });
+            reloadTable();
+          }
+        });
+      }else{
+        swal("Proses Dibatalkan");
+      }
+    });
+  });//selesai
 })( jQuery );
 
 function reloadTable(){

@@ -67,7 +67,7 @@
             })
             ->editColumn('status', function($index){
                 if($index->tgl_selesai == null){
-                    return '<span class="bg-danger">Dalam Proses</span>';
+                    return '<span class="bg-danger">Proses</span>';
                 }else{
                     return '<span class="bg-success">Selesai</span>';
                 }
@@ -85,7 +85,7 @@
             })
             ->addColumn('action', function($index){
                 $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('monitoring-order.detail',['id' => $index->id]).'")><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a>';
-                $tag .= ' <a class="btn btn-success btn-sm hapus" idt="'.$index->id.'"")><i class="fa fa-check"></i><span class="tombol"> Selesai</span></a></center>';
+                $tag .= ' <a class="btn btn-success btn-sm selesai" idt="'.$index->id.'"")><i class="fa fa-check"></i><span class="tombol"> Selesai</span></a></center>';
                 return $tag;
             })
             ->rawColumns(['action','status'])
@@ -157,4 +157,16 @@
             // dd($data);
             return view('monitor-order.detail', $data); 
         }
+
+        public function selesai($id)
+        {
+            $order = Order::find($id);
+            $index = $order->update(['tgl_selesai' => thisDay()]);
+            if($index){
+                return response()->json('success');
+            }else{
+                return redirect()->route('monitor-order.index')->with('danger', 'Service');
+            }
+        }
+
     }
