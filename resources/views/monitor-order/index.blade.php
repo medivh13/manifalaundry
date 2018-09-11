@@ -5,30 +5,25 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
-      <span class="float-right" style="margin-top: -6px;">
-        <a class="btn btn-success btn-sm tambah" href="{{route('product.create')}}"><i class="fa fa-plus"></i><span class="tombol"> Add</span></a>
-      </span>
     </div>
     <br>
     <div class="panel-body">
       <div class="row">
-        <div style="overflow-x:auto;">
-          <div class="table-responsive">
-            <div class="col-md-12 classic">
-              <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
-                <thead>
-                  <tr>
-                    <th width="5%";>#</th>
-                    <th style="text-align:center;">Code</th>
-                    <th style="text-align:center;">Customer</th>
-                    <th style="text-align:center;">Order</th>
-                    <th style="text-align:center;">Finish</th>
-                    <th style="text-align:center;">Status</th>
-                    <th style="text-align:center;">Action</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+        <div class="table-responsive">
+          <div class="col-md-12 classic">
+            <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
+              <thead>
+                <tr>
+                  <th width="5%";>#</th>
+                  <th style="text-align:center;">Code</th>
+                  <th style="text-align:center;">Customer</th>
+                  <th style="text-align:center;">Order</th>
+                  <th style="text-align:center;">Finish</th>
+                  <th style="text-align:center;">Status</th>
+                  <th style="text-align:center;">Action</th>
+                </tr>
+              </thead>
+            </table>
           </div>
         </div>
       </div>
