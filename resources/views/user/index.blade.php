@@ -17,7 +17,7 @@
             <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
               <thead>
                 <tr>
-                  <th width="10%";>No</th>
+                  <th width="5%";>#</th>
                   <th style="text-align:center;">Name</th>
                   <th style="text-align:center;">Email</th>
                   <th style="text-align:center;">Action</th>
@@ -80,7 +80,6 @@
 </div>
 @endsection
 @section('css')
-<script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
 <style type="text/css">
 @media only screen and (max-width: 1026px) {
@@ -92,7 +91,7 @@
 @endsection
 @section('js')
 <script type="text/javascript" src="{{ asset('template/DataTables2/datatables.min.js') }}"></script>
-<script>
+<script type="text/javascript">
 (function ( $ ){
   $.ajaxSetup({
     headers: {

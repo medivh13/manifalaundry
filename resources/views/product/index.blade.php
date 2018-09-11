@@ -17,7 +17,7 @@
             <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
               <thead>
                 <tr>
-                  <th width="10%";>#</th>
+                  <th width="5%";>#</th>
                   <th style="text-align:center;">Name</th>
                   <th style="text-align:center;">Price</th>
                   <th style="text-align:center;">Action</th>
