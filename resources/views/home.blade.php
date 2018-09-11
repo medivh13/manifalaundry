@@ -33,6 +33,22 @@
   </div>
 </div>
 @endsection
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
+<style type="text/css">
+.AlignR{
+  text-align: right;
+}
+.AlignC{
+  text-align: center;
+}
+@media only screen and (max-width: 1026px) {
+    .tombol {
+        display: none;
+    }
+}
+</style>
+@endsection
 @section('js')
 <script type="text/javascript">
 /*(function ( $ ){
