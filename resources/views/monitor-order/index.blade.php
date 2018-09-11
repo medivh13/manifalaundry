@@ -20,9 +20,9 @@
                   <th width="5%";>#</th>
                   <th style="text-align:center;">Code</th>
                   <th style="text-align:center;">Customer</th>
-                  <th style="text-align:center;">Status</th>
                   <th style="text-align:center;">Order</th>
                   <th style="text-align:center;">Finish</th>
+                  <th style="text-align:center;">Status</th>
                   <th style="text-align:center;">Action</th>
                 </tr>
               </thead>
@@ -115,9 +115,9 @@ function getData(){
     {data: 'code', name: 'code', orderable: true, searchable: true},
     // {data: 'customer', name: 'customer', orderable: true, searchable: true,  sClass: "AlignR"},
     {data: 'customer', name: 'customer', orderable: true, searchable: true},
-    {data: 'status', name: 'status', orderable: true, searchable: true},
     {data: 'created_at', name: 'created_at', orderable: true, searchable: true},
     {data: 'tgl_selesai', name: 'tgl_selesai', orderable: true, searchable: true},
+    {data: 'status', name: 'status', orderable: true, searchable: true},
     {data: 'action', name: 'action', orderable: false, searchable: false},
     ],
   });
