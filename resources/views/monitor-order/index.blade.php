@@ -12,21 +12,23 @@
     <br>
     <div class="panel-body">
       <div class="row">
-        <div class="table-responsive">
-          <div class="col-md-12 classic">
-            <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
-              <thead>
-                <tr>
-                  <th width="5%";>#</th>
-                  <th style="text-align:center;">Code</th>
-                  <th style="text-align:center;">Customer</th>
-                  <th style="text-align:center;">Order</th>
-                  <th style="text-align:center;">Finish</th>
-                  <th style="text-align:center;">Status</th>
-                  <th style="text-align:center;">Action</th>
-                </tr>
-              </thead>
-            </table>
+        <div style="overflow-x:auto;">
+          <div class="table-responsive">
+            <div class="col-md-12 classic">
+              <table class="table table-bordered table-hover" id="table"><!-- buat triger di js #table-->
+                <thead>
+                  <tr>
+                    <th width="5%";>#</th>
+                    <th style="text-align:center;">Code</th>
+                    <th style="text-align:center;">Customer</th>
+                    <th style="text-align:center;">Order</th>
+                    <th style="text-align:center;">Finish</th>
+                    <th style="text-align:center;">Status</th>
+                    <th style="text-align:center;">Action</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -44,9 +46,9 @@
   text-align: center;
 }
 @media only screen and (max-width: 1026px) {
-    .tombol {
-        display: none;
-    }
+  .tombol {
+    display: none;
+  }
 }
 </style>
 @endsection
