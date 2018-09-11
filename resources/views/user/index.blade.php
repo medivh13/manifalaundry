@@ -5,9 +5,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
-      <span class="float-right" style="margin-top: -6px;">
-        <a class="btn btn-success btn-sm tambah" data-toggle="modal"><i class="fa fa-plus"></i><span class="tombol"> Add</span></button>
-      </span>
+      <div class="float-right" style="margin-top: -6px;">
+        <a class="btn btn-success btn-sm tambah" data-toggle="modal"><i class="fa fa-plus"></i><span class="tombol"> Add</span></a>
+      </div>
     </div>
     <br>
     <div class="panel-body">
