@@ -46,19 +46,17 @@
       </div>
       <div class = "col-lg-6">
         <div class="form-group">
-          <div class="col-sm-10">
+          <div class="col-sm-12">
             <select name="product_id" class="form-control product_id" data-placeholder="Pilih Layanan">
               @foreach ($product as $key => $val)
               <option value="{{$val->id}}">{{ ucwords($val->name) }}</option>
               @endforeach
             </select>
           </div>
-          <div class="col-sm-2">
-            <button type="button" id="add_prod" class="btn btn-info btn-xs add_prod"><i class="fa fa-plus"></i></button>
-          </div>
         </div><br><br>
         <div class="form-group">
           <div class="col-md-12">
+            <button type="button" id="add_prod" class="btn btn-info btn-xs float-right add_prod"><i class="fa fa-plus"></i></button><br><br>
             <table class="table table-bordered table-hover table3">
               <thead>
                 <tr>
