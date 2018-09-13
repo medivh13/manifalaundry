@@ -71,34 +71,5 @@
   });
   // getData();
 })( jQuery );
-
-// function reloadTable(){
-//   table.ajax.reload(null,false); //reload datatable ajax
-// }
-// function getData(){
-//   jQuery.noConflict();
-//   table = jQuery('#table').DataTable({
-//     dom: "lBfrtip",
-//     processing: true,
-//     serverSide: true,
-//     responsive: true,
-//     destroy: true,
-//     bFilter:true,
-//     // searching: true,
-//     order: [],
-//     // ajax: 'monitoring-order/show',
-
-//     // columns: [
-//     // {data: 'nomor',name: 'nomor',orderable: false, searchable: false, render: function(data, type, row, meta) {  return meta.row + meta.settings._iDisplayStart + 1; }},
-//     // {data: 'code', name: 'code', orderable: true, searchable: true},
-//     // // {data: 'customer', name: 'customer', orderable: true, searchable: true,  sClass: "AlignR"},
-//     // {data: 'customer', name: 'customer', orderable: true, searchable: true},
-//     // {data: 'status', name: 'status', orderable: true, searchable: true},
-//     // {data: 'created_at', name: 'created_at', orderable: true, searchable: true},
-//     // {data: 'tgl_selesai', name: 'tgl_selesai', orderable: true, searchable: true},
-//     // {data: 'action', name: 'action', orderable: false, searchable: false},
-//     // ],
-//   });
-// }
 </script>
 @endsection

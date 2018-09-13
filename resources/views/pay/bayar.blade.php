@@ -5,6 +5,11 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <strong id="title">{{$title}}</strong>
+      <div class="float-right">
+      <button type="button" class="btn btn-second" onclick="window.history.back()">
+        <i class="fa fa-backward"></i> Back
+      </button>
+    </div>
     </div>
     <br>
     <div class="panel-body">
@@ -35,12 +40,32 @@
           </div>
         </div>
       </div>
+      <div class="float-right">
+        <div class="table-responsive">
+          <div class="col-md-7 classic">
+            <table class="table table-bordered table-hover" id="table2"><!-- buat triger di js #table-->
+              <thead>
+                <th width="30%"><center> - </center></th><th><center> - </center></th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><center>Total Biaya</center></td><td><center>{{$total}}</center></td>
+                </tr>
+                <tr>
+                  <td><center>Total Bayar</center></td><td><input type="text" placeholder="0" style="text-align: center;"></td>
+                </tr>
+                <tr>
+                  <td><center>Kembali</center></td><td><input type="text" placeholder="0" value="0" style="text-align: center;"></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      <button type="button" class="btn btn-success float-right">
+              <i class="fa fa-print"></i><span class="tombol"> Proses</span>
+            </button>
     </div>
-    <div class="float-right">
-      <button type="button" class="btn btn-second" onclick="window.history.back()">
-        <i class="fa fa-backward"></i>&nbsp; Back
-      </button>
-    </div>
+    
   </div>
 </div>
 @endsection
@@ -71,34 +96,5 @@
   });
   // getData();
 })( jQuery );
-
-// function reloadTable(){
-//   table.ajax.reload(null,false); //reload datatable ajax
-// }
-// function getData(){
-//   jQuery.noConflict();
-//   table = jQuery('#table').DataTable({
-//     dom: "lBfrtip",
-//     processing: true,
-//     serverSide: true,
-//     responsive: true,
-//     destroy: true,
-//     bFilter:true,
-//     // searching: true,
-//     order: [],
-//     // ajax: 'monitoring-order/show',
-
-//     // columns: [
-//     // {data: 'nomor',name: 'nomor',orderable: false, searchable: false, render: function(data, type, row, meta) {  return meta.row + meta.settings._iDisplayStart + 1; }},
-//     // {data: 'code', name: 'code', orderable: true, searchable: true},
-//     // // {data: 'customer', name: 'customer', orderable: true, searchable: true,  sClass: "AlignR"},
-//     // {data: 'customer', name: 'customer', orderable: true, searchable: true},
-//     // {data: 'status', name: 'status', orderable: true, searchable: true},
-//     // {data: 'created_at', name: 'created_at', orderable: true, searchable: true},
-//     // {data: 'tgl_selesai', name: 'tgl_selesai', orderable: true, searchable: true},
-//     // {data: 'action', name: 'action', orderable: false, searchable: false},
-//     // ],
-//   });
-// }
 </script>
 @endsection

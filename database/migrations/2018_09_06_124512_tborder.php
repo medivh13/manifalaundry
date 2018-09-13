@@ -21,7 +21,7 @@ class Tborder extends Migration
           $table->string('alamat')->nullable();
           $table->string('telp')->nullable();
           $table->string('keterangan')->nullable();
-          $table->timestamps('tgl_selesai')->nullable();
+          $table->timestamp('tgl_selesai')->nullable();
           $table->integer('status_bayar')->nullable();
           $table->timestamps();
         });

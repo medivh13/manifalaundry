@@ -16,6 +16,7 @@
             <ul class="sub-menu children dropdown-menu">
                 <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/order')}}">Orders</a></li>
                 <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/monitoring-order')}}">Monitoring Orders</a></li>
+                <li><i class="fa fa-location-arrow"></i><a href="{{URL('admin/pay')}}">Pembayaran</a></li>
             </ul>
         </li>
 
