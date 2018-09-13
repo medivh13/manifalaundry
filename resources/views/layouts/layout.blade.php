@@ -93,6 +93,7 @@
                 </div>
             </div>
         </div>
+    </header>
         <div class="breadcrumbs">
 
         </div>

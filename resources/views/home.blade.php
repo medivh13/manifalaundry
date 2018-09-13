@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
-  <div class="col-sm-12">
-    <div class="col-sm-6 col-lg-3">
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+    <div class="col-md-6 col-xs-12">
       <div class="card text-white bg-flat-color-1">
         <div class="card-body pb-0">
           <h4 class="mb-0">
@@ -15,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-md-6 col-xs-12">
       <div class="card text-white bg-flat-color-3">
         <div class="card-body pb-0">
           <h4 class="mb-0">
@@ -29,6 +30,7 @@
       </div>
     </div>
   </div>
+    </div>
 @endsection
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
