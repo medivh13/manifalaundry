@@ -1,8 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="rigth-panel">
-  <div class="content mt-3">
+  <div class="col-sm-12">
     <div class="col-sm-6 col-lg-3">
       <div class="card text-white bg-flat-color-1">
         <div class="card-body pb-0">
@@ -28,8 +27,7 @@
           </div>
         </div>
       </div>
-    </div>
-</div>
+  </div>
 @endsection
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('template/DataTables2/datatables.min.css') }}" />
