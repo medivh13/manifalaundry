@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin'], function(){
 	Route::resource('pay','Transaction\PayController');
 	Route::get('pay/detail/{id}','Transaction\PayController@detail')->name('pay.detail');
 	Route::get('pay/bayar/{id}','Transaction\PayController@bayar')->name('pay.bayar');
+	Route::get('pay/cetak/{id}','Transaction\PayController@bayar')->name('pay.cetak');
 	// Route::resource('/calculator','CalculatorController');
 	Route::resource('/user','UserController');
 });

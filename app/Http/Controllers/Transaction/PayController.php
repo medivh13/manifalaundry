@@ -46,7 +46,7 @@ class PayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -74,11 +74,12 @@ class PayController extends Controller
             })
             ->addColumn('action', function($index){
                 if($index->status_bayar){
-                    $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('pay.detail',['id' => $index->id]).'")><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a></center>';
+                    $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('pay.detail',['id' => $index->id]).'")><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a>';
+                    $tag .= ' <a class="btn btn-success btn-sm selesai" href="'.route('pay.cetak',['id' => $index->id]).'"><i class="fa fa-print"></i><span class="tombol"> Cetak</span></a></center>';
                     return $tag;
                 }else{
                     $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('pay.detail',['id' => $index->id]).'"><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a>';
-                    $tag .= ' <a class="btn btn-success btn-sm selesai" href="'.route('pay.bayar',['id' => $index->id]).'"><i class="fa fa-print"></i><span class="tombol"> Bayar</span></a></center>';
+                    $tag .= ' <a class="btn btn-warning btn-sm selesai" href="'.route('pay.bayar',['id' => $index->id]).'"><i class="fa fa-dollar"></i><span class="tombol"> Bayar</span></a></center>';
                     return $tag;
                 }
                 
@@ -107,7 +108,25 @@ class PayController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $data = collect($request->all())
+        ->except(['_token'])
+        ->merge([
+            'tgl_bayar' => thisday(),
+            // 
+            'status_bayar' => 1
+        ])
+        ->all();
+        // dd($data);
+        $bayar = Order::find($id);
+        // dd($bayar);
+        $index = $bayar->update($data);
+        if($index){
+            // $bayar->update($data);
+            return redirect()->route('pay.index')->with('update', 'Pembayaran');
+        }else{
+            return redirect()->route('pay.index')->with('danger', 'Pembayaran');
+        }
     }
 
     /**
@@ -184,5 +203,9 @@ class PayController extends Controller
         $data['total'] = $temp;
             // dd($data);
         return view('pay.bayar', $data); 
+    }
+
+    public function cetak($id){
+        
     }
 }
