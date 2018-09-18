@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\DetailOrder;
 use DataTables;
+use PDF;
 
 class PayController extends Controller
 {
@@ -76,6 +77,7 @@ class PayController extends Controller
                 if($index->status_bayar){
                     $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('pay.detail',['id' => $index->id]).'")><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a>';
                     $tag .= ' <a class="btn btn-success btn-sm selesai" href="'.route('pay.cetak',['id' => $index->id]).'"><i class="fa fa-print"></i><span class="tombol"> Cetak</span></a></center>';
+                    // $tag .= ' <a class="btn btn-success btn-sm cetak" idt="'.$index->id.'"><i class="fa fa-print"></i><span class="tombol"> Cetak</span></a></center>';
                     return $tag;
                 }else{
                     $tag = '<center><a class="btn btn-primary btn-sm detail" href="'.route('pay.detail',['id' => $index->id]).'"><i class="fa fa-bars"></i><span class="tombol"> Detail</span></a>';
@@ -206,6 +208,27 @@ class PayController extends Controller
     }
 
     public function cetak($id){
-        
+        $order = Order::find($id);
+        $detail = DetailOrder::where('order_id',$id)->get();
+        // dd($detail);
+        $data['code'] = $order->code;
+        $data['tgl_bayar'] = $order->tgl_bayar;
+        $data['jml_bayar'] = $order->jml_bayar;
+        $data['jml_kembali'] = $order->jml_kembali;
+        $data['total_biaya'] = $order->pemasukan;
+
+        foreach($detail as $key=>$val){
+            $product = Product::find($val->product_id);
+
+            $data['product_name'][$key] = $product->name;
+            $data['product_harga'][$key] = $product->harga;
+            $data['jumlah'][$key] = $val->amount;
+        }
+        // dd($data);
+        // return view('pay.pdf',$data);
+        $pdf = PDF::loadView('pay.pdf', $data)->setWarnings(false)->setPaper('a6', 'portrait');
+       
+        return  $pdf->download('struck_'.$order->code.'.pdf');
+
     }
 }
