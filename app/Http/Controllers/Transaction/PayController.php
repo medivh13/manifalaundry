@@ -21,7 +21,7 @@ class PayController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $data['title'] = 'Pembayaran';
         

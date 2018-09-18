@@ -27,15 +27,15 @@
           </div>
           <div class="form-group">
             <label for="customer" class="control-label mb-1">Customer</label>
-            <input id="customer" type="text" class="form-control created_at" name="customer" placeholder="Customer Name">
+            <input id="customer" type="text" class="form-control customer" name="customer" placeholder="Customer Name">
             <em id="customer-error" class="error invalid-feedback">Please input a Customer</em>
           </div>
           <div class="form-group">
             <label for="alamat" class="control-label mb-1">Alamat</label>
-            <input id="alamat" type="text" class="form-control created_at" name="alamat" placeholder="Alamat Customer">
+            <input id="alamat" type="text" class="form-control alamat" name="alamat" placeholder="Alamat Customer">
             <em id="alamat-error" class="error invalid-feedback">Please input a Address</em>
             <label for="telp" class="control-label mb-1">No. HP</label>
-            <input id="telp" type="text" class="form-control created_at" name="telp" placeholder="No. HP yg bisa dihubungi">
+            <input id="telp" type="text" class="form-control telp" name="telp" placeholder="No. HP yg bisa dihubungi">
             <em id="telp-error" class="error invalid-feedback">Please input a Phone Number</em>
           </div>
           <div class="form-group">
@@ -92,6 +92,8 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
     });
+    $('.customer').focus();
+    $('.telp').keypress(validateNumber);
 
   // $('.created_at').datepicker({
   //   format: "yyyy-mm-dd",
@@ -180,6 +182,15 @@
       $(element).addClass('is-valid').removeClass('is-invalid');
     }
   });
+
+  $('#jxForm').submit(function(){
+    let _this = $(this)
+    setTimeout(function(){
+      _this[0].reset()
+      $('.table3').find('tbody').html('');
+      toastr.success('Order Berhasil');
+    }, 1500)
+  })
 
 })( jQuery );
 
